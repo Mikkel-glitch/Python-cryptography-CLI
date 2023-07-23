@@ -11,15 +11,14 @@ class Hash256:
     def default_hash (self, defaultInput, numberOfIterations=10):
         for _ in range(numberOfIterations):
             hashedDefault256 = hashlib.sha256(defaultInput.encode(), usedforsecurity=True).hexdigest()
-
-            return hashedDefault256
+        return hashedDefault256
 
     def custom_hash (self, customInput, numberOfIterations=None):
         if numberOfIterations == None:
             numberOfIterations = 20
             for _ in range(numberOfIterations):
                 hashedCustom256 = hashlib.sha256(customInput.encode(), usedforsecurity=True).hexdigest()
-                return hashedCustom256
+            return hashedCustom256
         else:
             convertedNumberIterations = int(numberOfIterations)
             for _ in range(convertedNumberIterations):
@@ -28,14 +27,27 @@ class Hash256:
 
 class Hash512:
 
-    def hash_single (self):
-        pass
+    def hash_single (self, singleInput):
+        hashedSingle = hashlib.sha512(singleInput.encode(), usedforsecurity=True).hexdigest()
+        return hashedSingle
 
-    def hash_default (self):
-        pass
+    def hash_default (self, defaultInput, numberOfIterations=10):
+        for _ in range(numberOfIterations):
+            hashedDefault = hashlib.sha512(defaultInput.encode(), usedforsecurity=True).hexdigest()
+        return hashedDefault
 
-    def hash_custom (self):
-        pass
+    def hash_custom (self, customInput, numberOfIterations=None):
+        if numberOfIterations == None:
+            numberOfIterations = 20
+
+            for _ in range(numberOfIterations):
+                hashedCustom = hashlib.sha512(customInput.encode(), usedforsecurity=True).hexdigest()
+            return hashedCustom
+        else:
+            convertedNumberIteration = int(numberOfIterations)
+            for _ in range(convertedNumberIteration):
+                hashedCustom = hashlib.sha512(customInput.encode(), usedforsecurity=True).hexdigest()
+            return hashedCustom
 
 class Encrypt:
 
@@ -65,13 +77,15 @@ def main_function ():
         print("========== INPUT OPTION ==========\n")
         print("Hashing:\n [H1] Single hash\n [H2] Default hash\n [H3] Custom hash\n")
         print("Encrypting:\n [E1] Encrypt single file\n [E2] Encrypt multiple files\n")
+        print("Decrypting:\n [D1] Decrypt single file\n [D2] Decrypt multiple files\n ")
         option = input(">> ")
 
         try:
             if option.upper() == "H1":
-                hashInput = input(">> ")
-                hashValue = SHA256.hash_single(hashInput)
-                print("Hash value: {}".format(hashValue))
+                try:
+                    pass
+                except:
+                    pass
             elif option.upper() == "H2":
                 hashTwoInput = input(">> ")
                 hashTwoValue = SHA256.default_hash(hashTwoInput)
@@ -88,3 +102,4 @@ def main_function ():
 main_function()
 
 #TODO: Continue
+#TODO: Continue the try except
