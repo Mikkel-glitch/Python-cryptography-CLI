@@ -2,7 +2,7 @@
 ### Options are single hash, default hash and custom hash
 
 ### NOTE: Please keep the key in a secure directory in your computer, the CLI only supports Symmetric encryption
-### NOTE: The purpose of the CLI is rather for personal and private individual use than for public/enterprise use. The purpose is to hash and/or encrypt passwords stored in plain text in a local host or a.k.a you're laptop or to hide something you don't want for the public to see in plain text
+### NOTE: The purpose of the CLI is rather for personal and private individual use than for public/enterprise use. The purpose is to hash and/or encrypt passwords stored in plain text in a local host or a.k.a you're laptop or to hide something you don't want the public to see in plain text
 
 For Single hash, Choose if you want to hash your input using SHA-256 or SHA-512 and it will hash it one time only
 
