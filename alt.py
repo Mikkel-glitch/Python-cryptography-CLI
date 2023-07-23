@@ -39,7 +39,6 @@ class Hash512:
     def hash_custom (self, customInput, numberOfIterations=None):
         if numberOfIterations == None:
             numberOfIterations = 20
-
             for _ in range(numberOfIterations):
                 hashedCustom = hashlib.sha512(customInput.encode(), usedforsecurity=True).hexdigest()
             return hashedCustom
@@ -82,24 +81,63 @@ def main_function ():
 
         try:
             if option.upper() == "H1":
+                print("\n[S1] SHA-256 OR [S2] SHA-512\n")
+                hashOption = input(">> ")
                 try:
-                    pass
-                except:
-                    pass
+                    if hashOption.upper() == "S1":
+                        hash256Input = input(">> ")
+                        hash256Value = SHA256.hash_single(hash256Input)
+                        print("Hash value: {}".format(hash256Value))
+                    elif hashOption.upper() == "S2":
+                        hash512Input = input(">> ")
+                        hash512Value = SHA512.hash_single(hash512Input)
+                        print("Hash value: {}".format(hash512Value))
+                    else:
+                        raise ValueError("Unrecognized command")
+                except ValueError as valErrorOne:
+                    print("Error: {}".format(valErrorOne))
+                    hashOption = input(">> ")
             elif option.upper() == "H2":
-                hashTwoInput = input(">> ")
-                hashTwoValue = SHA256.default_hash(hashTwoInput)
-                print("Hash value: {}".format(hashTwoValue))
+                print("\n[S1] SHA-256 OR [S2] SHA-512\n")
+                hashOptionTwo = input(">> ")
+                try:
+                    if hashOptionTwo.upper() == "S1":
+                        hash256InputTwo = input(">> ")
+                        hash256ValueTwo = SHA256.default_hash(hash256InputTwo)
+                        print("Hash value: {}".format(hash256ValueTwo))
+                    elif hashOptionTwo.upper() == "S2":
+                        hash512InputTwo = input(">> ")
+                        hash512ValueTwo = SHA512.hash_default(hash512InputTwo)
+                        print("Hash value: {}".format(hash512ValueTwo))
+                    else:
+                        raise ValueError("Unrecognized option")
+                except ValueError as valErrorTwo:
+                    print("Error: {}".format(valErrorTwo))
+                    hashOptionTwo = input(">> ")
             elif option.upper() == "H3":
-                hashThreeInput = input(">> ")
-                hashThreeIterations = input(">> ")
-                hashThreeValue = SHA256.custom_hash(hashThreeInput, hashThreeIterations)
-                print("Hash value: {}".format(hashThreeValue))
+                print("\n[S1] SHA-256 OR [S2] SHA-512\n")
+                hashOptionThree = input(">> ")
+                try:
+                    if hashOptionThree.upper() == "S1":
+                        hash256InputThree = input(">> ")
+                        hashThreeIteration = input(">> ")
+                        hash256ValueThree = SHA256.custom_hash(hash256InputThree, hashThreeIteration)
+                        print("Hash value: {}".format(hash256ValueThree))
+                    elif hashOptionThree.upper() == "S2":
+                        hash512InputThree = input(">> ")
+                        hashThreeIteration = input(">> ")
+                        hash512ValueThree = SHA512.hash_custom(hash512InputThree, hashThreeIteration)
+                        print("Hash value: {}".format(hash512ValueThree))
+                except ValueError as valErrorThree:
+                    print("Error: {}".format(valErrorThree))
+                    hashOptionThree = input(">> ")
+            else:
+                raise ValueError("Unrecognized command")
         except ValueError as valError:
             print("Error: {}".format(valError))
             main_function()
 
 main_function()
 
-#TODO: Continue
-#TODO: Continue the try except
+#TODO: Continue the md file
+#TODO: Code the Encrypt and Decrypt class
