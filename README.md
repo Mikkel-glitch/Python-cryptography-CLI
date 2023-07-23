@@ -1,12 +1,13 @@
-# This is a simple Python CLI that hashes, encrypts and decrypts a string and a file
-# Options are single hash, default hash and custom hash
+### This is a simple Python CLI that hashes, encrypts and decrypts a string and a file
+### Options are single hash, default hash and custom hash
 
-# For single hash, just choose in the option if you want SHA-256 or SHA-512 and it will hash it using SHA-256 or SHA-512
+### NOTE: Please keep the key in a secure directory in your computer, the CLI only supports Symmetric encryption
+### NOTE: The purpose of the CLI is rather for personal and private individual use than for public/enterprise use. The purpose is to hash and/or encrypt passwords stored in plain text in a local host or a.k.a you're laptop or to hide something you don't want for the public to see in plain text
 
-# For default hash, just choose in the option if you want SHA-256 or SHA-512 and it will hash it 10 times since default is 10 hashing times
+For Single hash, Choose if you want to hash your input using SHA-256 or SHA-512 and it will hash it one time only
 
-# For custom hash, just choose in the option if you want SHA-256 or SHA-512 and enter how many times it will hash it and it will hash it based on what number you've inputted. The CLI will throw an error if you input a number lower than 20, it must always be higher than 20 or else it will just hash it 20 times.
+For Default hash, Choose if you want to hash your input using SHA-256 or SHA-512 and it will hash it 10 times as 10 is the default number of times to iterate
 
-# The CLI can also encrypt and decrypt files. Please keep the key secure as it only uses Symmetric encryption/decryption.
+For Custom hash, Choose if you want to hash your input using SHA-256 or SHA-512 and provide a number. The number you input will be used by the CLI to iterate over and over until it's done, as long as the iteration isn't over the hashing also isn't over.
 
-# The purpose of the CLI is rather for personal and private individual use than for public/enterprise use. The purpose is to hash and/or encrypt passwords stored in plain text in a local host or a.k.a you're laptop# 
+
