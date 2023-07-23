@@ -9,26 +9,22 @@ class Hash256:
         return hashedSingle256
 
     def default_hash (self, defaultInput, numberOfIterations=10):
-        for iterations in numberOfIterations:
-            while iterations < 11:
-                mainStorageVar = hashlib.sha256(defaultInput.encode(), usedforsecurity=True).hexdigest()
-                iterations = iterations + 1
+        for _ in range(numberOfIterations):
+            hashedDefault256 = hashlib.sha256(defaultInput.encode(), usedforsecurity=True).hexdigest()
 
-                if iterations == 10:
-                    return mainStorageVar
+            return hashedDefault256
 
-    def custom_hash (self, customInput, numberOfIterations=20):
-        if numberOfIterations == None or numberOfIterations > 20:
-            for iterations in numberOfIterations:
-                while iterations <= numberOfIterations:
-                    mainStorageVar = hashlib.sha256(customInput.encode(), usedforsecurity=True).hexdigest()
-                    iterations = iterations + 1
-
-                    if iterations == numberOfIterations:
-                        return mainStorageVar
-
-#TODO: Continue the hasher. Continue default hash
-#TODO: Fix logic of code
+    def custom_hash (self, customInput, numberOfIterations=None):
+        if numberOfIterations == None:
+            numberOfIterations = 20
+            for _ in range(numberOfIterations):
+                hashedCustom256 = hashlib.sha256(customInput.encode(), usedforsecurity=True).hexdigest()
+                return hashedCustom256
+        else:
+            convertedNumberIterations = int(numberOfIterations)
+            for _ in range(convertedNumberIterations):
+                hashedCustom256 = hashlib.sha256(customInput.encode(), usedforsecurity=True).hexdigest()
+            return hashedCustom256
 
 class Hash512:
 
