@@ -50,8 +50,36 @@ class Hash512:
 
 class Encrypt:
 
-    def encrypt_single (self):
-        pass
+    def encrypt_single (self, fileName, pathToDirectory):
+
+        generatedKey = Fernet.generate_key()
+        
+        for _ in operating_system.listdir(pathToDirectory):
+            try:
+                if operating_system.path.isfile():
+                    try:
+                        if operating_system.access(fileName, operating_system.F_OK) and operating_system.access(fileName, operating_system.R_OK):
+                            with open (fileName, "rb") as fileContents:
+                                fileStuff = fileContents.read()
+                            encryptFileContents = Fernet(generatedKey).encrypt(fileStuff)
+                            with open (fileName, "wb") as encryptedFileContents:
+                                encryptedFileContents.write(encryptFileContents)
+                            print("\n\nSuccessfully encrypted files")
+                            print("Your Fernet key: {}".format(generatedKey))
+                            print("\n\nKEEP THE KEY SECURE AND SOMEPLACE THAT YOU CAN REMEMBER IT")
+                            print("IF YOU LOSE IT THEN YOU WON'T BE ABLE TO DECRYPT THE ENCRYPTED FILE\n\n")
+                        else:
+                            raise ReferenceError("File cannot be accessed or does not have read permission")
+                    except ReferenceError as innerRefError:
+                        print("Error: {}".format(innerRefError))
+                        main_function()
+                else:
+                    raise ReferenceError("Directory just contains directory and no files")
+            except ReferenceError as refError:
+                print("\nError: {}\n".format(refError))
+                main_function()
+
+                #TODO: Continue the encrypt multiple and check the encrypt single for bugs and errors
 
     def encrypt_multiple (self):
         pass
@@ -72,7 +100,7 @@ def main_function ():
     DECRYPT = Decrypt()
 
     while True:
-        print("========== HASHING CLI ==========")
+        print("\n\n========== HASHING CLI ==========")
         print("========== INPUT OPTION ==========\n")
         print("Hashing:\n [H1] Single hash\n [H2] Default hash\n [H3] Custom hash\n")
         print("Encrypting:\n [E1] Encrypt single file\n [E2] Encrypt multiple files\n")
